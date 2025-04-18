@@ -8,7 +8,7 @@ def seed_fake_data():
     if Record.query.count() == 0:
         print("Seeding fake data into the database...")
         start_date = datetime(2025, 4, 1)
-        for day in range(10):
+        for day in range(30):
             current_date = start_date + timedelta(days=day)
             num_records = random.randint(5, 15)
             for _ in range(num_records):

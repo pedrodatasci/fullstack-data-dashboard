@@ -2,34 +2,35 @@
 
 This project is a complete fullstack data dashboard built with:
 
-- 🐍 Flask for API creation
-- 📈 Dash + Plotly for interactive data visualization
-- 🐘 PostgreSQL for data persistence
-- 🐳 Docker-ready structure for deployment
-- 🧪 Fake data seeding included automatically on first run
+- 🐍 Flask for API creation  
+- 📈 Dash + Plotly for interactive data visualization  
+- 🐘 PostgreSQL for data persistence  
+- 🐳 Docker-ready structure for deployment  
+- 🧪 Fake data seeding included automatically on first run  
 
 ---
 
 ## ✨ Features
 
-- REST API to register and list data
-- Interactive dashboard with daily aggregation
-- 7-day linear trend projection built with `scikit-learn`
-- Automatic seeding of 100+ fake records for demo purposes
-- Modular and production-ready structure
+- REST API to register and list data  
+- Interactive dashboard with daily aggregation  
+- 7-day dual forecast: Linear Regression and Holt-Winters  
+- Automatic seeding of 100+ fake records for demo purposes  
+- Modular and production-ready structure  
 
 ---
 
 ## 📦 Tech Stack
 
-- Python 3.10+
-- Flask
-- Dash / Plotly
-- SQLAlchemy
-- PostgreSQL
-- scikit-learn
-- Docker (optional)
-- pandas / requests
+- Python 3.10+  
+- Flask  
+- Dash / Plotly  
+- SQLAlchemy  
+- PostgreSQL  
+- scikit-learn  
+- statsmodels  
+- Docker (optional)  
+- pandas / requests  
 
 ---
 
@@ -47,7 +48,7 @@ project/
 │   │   └── models.py          # SQLAlchemy model
 │   └── dashapp/
 │       ├── __init__.py
-│       └── dashboard.py       # Dash layout and logic
+│       └── dashboard.py       # Dash layout and logic with dual forecast
 ├── run.py                     # Entry point for running the app
 ├── requirements.txt           # Python dependencies
 ├── docker-compose.yml         # (Optional) Docker setup
@@ -59,12 +60,14 @@ project/
 ## ▶️ How to Run Locally
 
 ### 1. Clone the project
+
 ```bash
-git clone https://github.com/pedrodatasci/fullstack-data-dashboard
+git clone https://github.com/pedrodatasci/fullstack-data-dashboard.git
 cd fullstack-data-dashboard
 ```
 
 ### 2. Create and activate a virtual environment
+
 ```bash
 python -m venv venv
 # Windows:
@@ -74,39 +77,44 @@ source venv/bin/activate
 ```
 
 ### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Start PostgreSQL (Docker or local)
+
 Make sure PostgreSQL is running and accessible at:
+
 ```
 postgresql://user:password@localhost:5432/insights
 ```
 
 ### 5. Run the application
+
 ```bash
 python run.py
 ```
 
-- API: [http://localhost:5000/api/records](http://localhost:5000/api/records)
+- API: [http://localhost:5000/api/records](http://localhost:5000/api/records)  
 - Dashboard: [http://localhost:5000/dashboard/](http://localhost:5000/dashboard/)
 
 ---
 
 ## 📊 Dashboard Preview
 
-- Interactive bar chart showing daily values
-- Automatically generated trend line for the next 7 days
-- Fake data seeded on first run — no need to insert manually!
+- First chart: daily values + 7-day forecast using **Linear Regression**  
+- Second chart: same data projected with **Holt-Winters (Exponential Smoothing)**  
+- Third chart: comparison of both forecasts side-by-side (line chart)  
+- Fake data seeded automatically if no records exist  
 
 ---
 
 ## 📌 Notes
 
-- `venv/` should not be committed. Use `.gitignore`.
-- Dashboard supports basic extensibility (filters, export, themes).
-- Ready for containerization and cloud deployment (AWS, GCP, Azure).
+- `venv/` should not be committed. Use `.gitignore`.  
+- Dashboard supports extensibility (filters, export, themes).  
+- Ready for cloud deployment (AWS, GCP, Azure).  
 
 ---
 
@@ -120,4 +128,3 @@ Pedro Sá
 ## 📜 License
 
 MIT License
-
